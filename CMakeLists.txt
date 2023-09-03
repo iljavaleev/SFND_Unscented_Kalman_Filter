@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10.0)
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++20)
 
 set(CXX_FLAGS "-Wall")
+set(CXX_FLAGS "-I /opt/homebrew/include/eigen3")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
 project(playback)

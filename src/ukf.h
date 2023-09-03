@@ -3,6 +3,8 @@
 
 #include "Eigen/Dense"
 #include "measurement_package.h"
+#include <vector>
+#include <matplot/matplot.h>
 
 class UKF {
  public:
@@ -40,8 +42,10 @@ class UKF {
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
-
-
+    
+    void UpdateHelper(MeasurementPackage, Eigen::MatrixXd, bool);
+    
+    
   // initially set to false, set to true in first call of ProcessMeasurement
   bool is_initialized_;
 
@@ -59,6 +63,10 @@ class UKF {
 
   // predicted sigma points matrix
   Eigen::MatrixXd Xsig_pred_;
+    
+    Eigen::MatrixXd Q_;
+    Eigen::MatrixXd R_rad_;
+    Eigen::MatrixXd R_lid_;
 
   // time when the state is true, in us
   long long time_us_;
@@ -87,9 +95,10 @@ class UKF {
   // Weights of sigma points
   Eigen::VectorXd weights_;
 
+    std::vector<double> niss;
   // State dimension
   int n_x_;
-
+    int n_z_;
   // Augmented state dimension
   int n_aug_;
 

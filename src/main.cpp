@@ -3,7 +3,12 @@
 // for exploring self-driving car sensors
 
 //#include "render/render.h"
+#include <matplot/matplot.h>
 #include "highway.h"
+#include <vector>
+#include "ukf.h"
+
+
 
 int main(int argc, char** argv)
 {
@@ -19,7 +24,7 @@ int main(int argc, char** argv)
 	Highway highway(viewer);
 
 	//initHighway(viewer);
-
+    
 	int frame_per_sec = 30;
 	int sec_interval = 10;
 	int frame_count = 0;
@@ -39,5 +44,6 @@ int main(int argc, char** argv)
 		time_us = 1000000*frame_count/frame_per_sec;
 		
 	}
-
+   
+  
 }
